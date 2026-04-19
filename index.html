@@ -10,43 +10,41 @@
 <style>
   :root {
     --orange: #CC785C;
-    --orange-dim: #8a4f3d;
     --bg: #0a0a0a;
     --bg-panel: #141414;
     --fg: #f4f1ea;
-    --fg-dim: #8a8680;
-    --border: #262626;
+    --fg-dim: #6b6762;
+    --border: #1f1f1f;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
 
-  html, body {
+  body {
     background: var(--bg);
     color: var(--fg);
     font-family: 'Inter', -apple-system, sans-serif;
     font-size: 16px;
     line-height: 1.5;
-    min-height: 100vh;
   }
 
   a { color: var(--orange); text-decoration: none; }
   a:hover { text-decoration: underline; }
 
   .page {
-    max-width: 1400px;
+    max-width: 1440px;
     margin: 0 auto;
-    padding: 48px 32px 80px;
+    padding: 40px 40px 80px;
   }
 
+  /* ── Header ── */
   header {
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 24px;
-    margin-bottom: 48px;
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
-    gap: 16px;
+    align-items: center;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 56px;
   }
 
   .brand {
@@ -58,82 +56,86 @@
   }
   .brand .dot { color: var(--orange); }
 
-  .nav a {
+  nav { display: flex; gap: 28px; }
+  nav a {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.05em;
+    font-size: 12px;
+    letter-spacing: 0.08em;
     color: var(--fg-dim);
-    margin-left: 20px;
+    transition: color 0.15s;
   }
-  .nav a:hover { color: var(--orange); text-decoration: none; }
+  nav a:hover { color: var(--fg); text-decoration: none; }
 
+  /* ── Hero ── */
   .hero {
-    margin-bottom: 56px;
+    margin-bottom: 64px;
   }
   .kicker {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    color: var(--orange);
-    letter-spacing: 0.15em;
+    font-size: 12px;
+    color: var(--fg-dim);
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 16px;
   }
   h1 {
-    font-size: clamp(40px, 6vw, 72px);
+    font-size: clamp(52px, 7vw, 96px);
     font-weight: 700;
-    line-height: 1.05;
-    letter-spacing: -0.03em;
-    margin-bottom: 20px;
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin-bottom: 24px;
   }
   h1 .accent { color: var(--orange); }
   .sub {
-    font-size: 18px;
+    font-size: 17px;
     color: var(--fg-dim);
-    max-width: 640px;
+    max-width: 500px;
+    line-height: 1.6;
   }
 
+  /* ── Two-column layout ── */
   .layout {
     display: grid;
-    grid-template-columns: 1fr 360px;
-    gap: 32px;
+    grid-template-columns: 1fr 430px;
+    gap: 28px;
     align-items: start;
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 1024px) {
     .layout { grid-template-columns: 1fr; }
   }
 
-  section { margin-bottom: 48px; }
-
-  h2 {
+  /* ── Section labels ── */
+  .section-label {
     font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.15em;
+    font-size: 11px;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--fg-dim);
-    margin-bottom: 16px;
+    margin-bottom: 14px;
     display: flex;
     align-items: center;
     gap: 10px;
   }
-  h2::before {
+  .section-label::before {
     content: '';
-    width: 8px;
-    height: 8px;
+    width: 6px; height: 6px;
     background: var(--orange);
     border-radius: 50%;
+    flex-shrink: 0;
   }
 
+  /* ── Embed frames ── */
   .embed {
     position: relative;
     width: 100%;
     background: var(--bg-panel);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 36px;
   }
-  .embed.slides { aspect-ratio: 16 / 9; }
-  .embed.video  { aspect-ratio: 16 / 9; }
   .embed iframe {
     position: absolute;
     inset: 0;
@@ -142,46 +144,128 @@
     border: 0;
   }
 
-  aside {
-    position: sticky;
-    top: 24px;
-  }
+  /* ── Game panel ── */
+  aside { position: sticky; top: 24px; }
 
   .game-panel {
     background: var(--bg-panel);
     border: 1px solid var(--border);
-    border-radius: 8px;
+    border-radius: 6px;
     overflow: hidden;
   }
-  .game-header {
-    padding: 14px 16px;
+  .game-cta {
+    padding: 20px 20px 16px;
     border-bottom: 1px solid var(--border);
     display: flex;
     justify-content: space-between;
     align-items: center;
   }
-  .game-title {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--orange);
-  }
-  .game-sub {
+  .game-cta-left {}
+  .game-cta-label {
     font-family: 'JetBrains Mono', monospace;
     font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
     color: var(--fg-dim);
+    margin-bottom: 4px;
   }
+  .game-cta-title {
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--fg);
+  }
+  .play-btn {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 8px 16px;
+    background: var(--orange);
+    color: #1a0f0a;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: opacity 0.15s;
+    cursor: pointer;
+    border: none;
+  }
+  .play-btn:hover { opacity: 0.85; text-decoration: none; }
   .game-frame {
     width: 100%;
-    height: 620px;
+    height: 600px;
     border: 0;
     display: block;
     background: #060606;
   }
 
+  /* ── Install section ── */
+  .install-section {
+    margin-top: 8px;
+  }
+  .install-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 700px) {
+    .install-cards { grid-template-columns: 1fr; }
+  }
+  .install-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 24px;
+  }
+  .install-card-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .install-steps { list-style: none; counter-reset: steps; }
+  .install-steps li {
+    counter-increment: steps;
+    display: flex;
+    gap: 14px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    color: var(--fg);
+    line-height: 1.5;
+  }
+  .install-steps li:last-child { margin-bottom: 0; }
+  .install-steps li::before {
+    content: counter(steps);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--orange);
+    background: rgba(204,120,92,0.12);
+    border-radius: 3px;
+    min-width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .install-steps code {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    background: rgba(255,255,255,0.06);
+    padding: 2px 6px;
+    border-radius: 3px;
+    color: var(--fg);
+  }
+  .install-steps .dim { color: var(--fg-dim); font-size: 13px; }
+  .install-steps a { font-size: 13px; }
+
+  /* ── Footer ── */
   footer {
-    margin-top: 64px;
+    margin-top: 72px;
     padding-top: 24px;
     border-top: 1px solid var(--border);
     display: flex;
@@ -189,108 +273,105 @@
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
     color: var(--fg-dim);
-    letter-spacing: 0.05em;
   }
   footer a { color: var(--fg-dim); }
   footer a:hover { color: var(--orange); }
-
-  .cta-row {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-top: 24px;
-  }
-  .btn {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px;
-    letter-spacing: 0.05em;
-    padding: 10px 18px;
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    color: var(--fg);
-    transition: all 0.15s ease;
-  }
-  .btn:hover {
-    border-color: var(--orange);
-    color: var(--orange);
-    text-decoration: none;
-  }
-  .btn.primary {
-    background: var(--orange);
-    border-color: var(--orange);
-    color: #1a0f0a;
-  }
-  .btn.primary:hover {
-    background: transparent;
-    color: var(--orange);
-  }
 </style>
 </head>
 <body>
 <div class="page">
 
   <header>
-    <div class="brand">claude<span class="dot">.</span>code <span style="opacity:0.5">//</span> talk</div>
-    <nav class="nav">
+    <div class="brand">claude<span class="dot">.</span>code</div>
+    <nav>
       <a href="#slides">slides</a>
       <a href="#recording">recording</a>
+      <a href="#install">install</a>
       <a href="https://www.zitvar.ai" target="_blank" rel="noopener">zitvar.ai ↗</a>
     </nav>
   </header>
 
   <div class="hero">
-    <div class="kicker">Wharton AI Club · Guest Talk</div>
-    <h1>Claude <span class="accent">Code</span>.</h1>
-    <p class="sub">A talk by Itay Zitvar on vibe coding, agentic development, and how Claude Code actually works under the hood.</p>
-    <div class="cta-row">
-      <a class="btn primary" href="#recording">▶ Watch recording</a>
-      <a class="btn" href="#slides">View slides</a>
-      <a class="btn" href="https://www.zitvar.ai" target="_blank" rel="noopener">About me ↗</a>
-    </div>
+    <div class="kicker">Wharton AI Club · 2026</div>
+    <h1>Claude <span class="accent">Code.</span></h1>
+    <p class="sub">A talk by <a href="https://www.zitvar.ai" target="_blank" rel="noopener">Itay Zitvar</a> on vibe coding, agentic development, and how Claude Code works under the hood.</p>
   </div>
 
   <div class="layout">
     <main>
 
-      <section id="slides">
-        <h2>Slides</h2>
-        <div class="embed slides">
+      <div id="slides">
+        <div class="section-label">Slides</div>
+        <div class="embed">
           <iframe
             src="https://docs.google.com/presentation/d/1LhVUWSnqvVQetqTk09WNNmYnIllV2Dm_JGoSw3KyZVI/embed?start=false&loop=false&delayms=60000"
-            allowfullscreen
-            mozallowfullscreen
-            webkitallowfullscreen></iframe>
+            allowfullscreen mozallowfullscreen webkitallowfullscreen></iframe>
         </div>
-      </section>
+      </div>
 
-      <section id="recording">
-        <h2>Recording</h2>
-        <div class="embed video">
+      <div id="recording">
+        <div class="section-label">Recording</div>
+        <div class="embed">
           <iframe
             src="https://drive.google.com/file/d/1wxzCCSMY7FLn6aI6b3oEC2bjBId1twhu/preview"
-            allow="autoplay"
-            allowfullscreen></iframe>
+            allow="autoplay" allowfullscreen></iframe>
         </div>
-      </section>
+      </div>
+
+      <div id="install" class="install-section">
+        <div class="section-label">Setup guide</div>
+        <div class="install-cards">
+
+          <div class="install-card">
+            <div class="install-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Mac
+            </div>
+            <ol class="install-steps">
+              <li>Download the <strong>Claude desktop app</strong> and sign in.</li>
+              <li>Upgrade to <strong>Claude Pro</strong> inside the app.</li>
+              <li>Open Terminal and run:<br><code>xcode-select --install</code><br><span class="dim">(or get Git from <a href="https://git-scm.com/install" target="_blank">git-scm.com</a>)</span></li>
+              <li><strong>Fully quit</strong> Claude via the menu bar or dock, then reopen.</li>
+              <li class="dim">Optional: Settings → Claude Code → Allow bypass permissions.</li>
+            </ol>
+          </div>
+
+          <div class="install-card">
+            <div class="install-card-title">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Windows
+            </div>
+            <ol class="install-steps">
+              <li>Download the <strong>Claude desktop app</strong> and sign in.</li>
+              <li>Upgrade to <strong>Claude Pro</strong> inside the app.</li>
+              <li>Download <strong>Git for Windows</strong> from <a href="https://git-scm.com/install" target="_blank">git-scm.com</a> — default settings are fine.</li>
+              <li><strong>Fully quit</strong> Claude via the system tray, then reopen.</li>
+              <li class="dim">Optional: Settings → Claude Code → Allow bypass permissions.</li>
+            </ol>
+          </div>
+
+        </div>
+      </div>
 
     </main>
 
     <aside>
       <div class="game-panel">
-        <div class="game-header">
-          <span class="game-title">▸ cross the road</span>
-          <span class="game-sub">built with claude</span>
+        <div class="game-cta">
+          <div class="game-cta-left">
+            <div class="game-cta-label">built with claude</div>
+            <div class="game-cta-title">Cross the Road</div>
+          </div>
+          <button class="play-btn" onclick="document.getElementById('gameFrame').contentWindow.focus()">▶ Play</button>
         </div>
-        <iframe class="game-frame" src="game.html" title="Cross the Road"></iframe>
+        <iframe id="gameFrame" class="game-frame" src="game.html" title="Cross the Road"></iframe>
       </div>
     </aside>
   </div>
 
   <footer>
-    <div>© 2026 Itay Zitvar</div>
-    <div>
-      <a href="https://www.zitvar.ai" target="_blank" rel="noopener">zitvar.ai</a>
-    </div>
+    <span>Itay Zitvar · 2026</span>
+    <a href="https://www.zitvar.ai" target="_blank" rel="noopener">zitvar.ai ↗</a>
   </footer>
 
 </div>
