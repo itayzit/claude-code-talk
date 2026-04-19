@@ -272,6 +272,29 @@
     margin-top: 3px;
   }
 
+  /* ── Gallery ── */
+  .gallery-section {
+    margin-top: 64px;
+  }
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  @media (max-width: 700px) {
+    .gallery-grid { grid-template-columns: 1fr; }
+  }
+  .gallery-grid img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 6px;
+    display: block;
+    filter: grayscale(15%);
+    transition: filter 0.2s;
+  }
+  .gallery-grid img:hover { filter: grayscale(0%); }
+
   /* ── Footer ── */
   footer {
     margin-top: 72px;
@@ -376,6 +399,15 @@
         <iframe id="gameFrame" class="game-frame" src="game.html" title="Cross the Road"></iframe>
       </div>
     </aside>
+  </div>
+
+  <div class="gallery-section">
+    <div class="section-label">From the session</div>
+    <div class="gallery-grid">
+      <img src="photo-hall.jpeg" alt="Full lecture hall during the talk">
+      <img src="photo-presenter.jpeg" alt="Presenting Claude Code Zero to Hero">
+      <img src="photo-hat.jpeg" alt="Thinking cap with Claude open on laptop">
+    </div>
   </div>
 
   <footer>
