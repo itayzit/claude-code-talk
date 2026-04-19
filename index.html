@@ -229,11 +229,9 @@
   .install-steps li {
     counter-increment: steps;
     display: flex;
-    gap: 14px;
-    margin-bottom: 16px;
-    font-size: 14px;
-    color: var(--fg);
-    line-height: 1.5;
+    gap: 12px;
+    margin-bottom: 14px;
+    align-items: flex-start;
   }
   .install-steps li:last-child { margin-bottom: 0; }
   .install-steps li::before {
@@ -250,18 +248,30 @@
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    margin-top: 1px;
+    margin-top: 2px;
   }
+  .install-steps .step-text {
+    font-size: 14px;
+    color: var(--fg);
+    line-height: 1.6;
+  }
+  .install-steps .step-text.dim { color: var(--fg-dim); }
   .install-steps code {
     font-family: 'JetBrains Mono', monospace;
     font-size: 12px;
-    background: rgba(255,255,255,0.06);
+    background: rgba(255,255,255,0.07);
     padding: 2px 6px;
     border-radius: 3px;
     color: var(--fg);
+    display: inline-block;
+    margin-top: 4px;
   }
-  .install-steps .dim { color: var(--fg-dim); font-size: 13px; }
-  .install-steps a { font-size: 13px; }
+  .install-steps .note {
+    display: block;
+    font-size: 12px;
+    color: var(--fg-dim);
+    margin-top: 3px;
+  }
 
   /* ── Footer ── */
   footer {
@@ -328,11 +338,11 @@
               Mac
             </div>
             <ol class="install-steps">
-              <li>Download the <strong>Claude desktop app</strong> and sign in.</li>
-              <li>Upgrade to <strong>Claude Pro</strong> inside the app.</li>
-              <li>Open Terminal and run:<br><code>xcode-select --install</code><br><span class="dim">(or get Git from <a href="https://git-scm.com/install" target="_blank">git-scm.com</a>)</span></li>
-              <li><strong>Fully quit</strong> Claude via the menu bar or dock, then reopen.</li>
-              <li class="dim">Optional: Settings → Claude Code → Allow bypass permissions.</li>
+              <li><span class="step-text">Download the <strong>Claude desktop app</strong> and sign in.</span></li>
+              <li><span class="step-text">Upgrade to <strong>Claude Pro</strong> inside the app.</span></li>
+              <li><span class="step-text">Open Terminal and run:<code>xcode-select --install</code><span class="note">Or get Git from <a href="https://git-scm.com/install" target="_blank">git-scm.com</a></span></span></li>
+              <li><span class="step-text">Fully quit Claude via the menu bar or dock, then reopen.</span></li>
+              <li><span class="step-text dim">Optional: Settings → Claude Code → Allow bypass permissions.</span></li>
             </ol>
           </div>
 
@@ -342,11 +352,11 @@
               Windows
             </div>
             <ol class="install-steps">
-              <li>Download the <strong>Claude desktop app</strong> and sign in.</li>
-              <li>Upgrade to <strong>Claude Pro</strong> inside the app.</li>
-              <li>Download <strong>Git for Windows</strong> from <a href="https://git-scm.com/install" target="_blank">git-scm.com</a> — default settings are fine.</li>
-              <li><strong>Fully quit</strong> Claude via the system tray, then reopen.</li>
-              <li class="dim">Optional: Settings → Claude Code → Allow bypass permissions.</li>
+              <li><span class="step-text">Download the <strong>Claude desktop app</strong> and sign in.</span></li>
+              <li><span class="step-text">Upgrade to <strong>Claude Pro</strong> inside the app.</span></li>
+              <li><span class="step-text">Download <strong>Git for Windows</strong> from <a href="https://git-scm.com/install" target="_blank">git-scm.com</a> — default settings are fine.</span></li>
+              <li><span class="step-text">Fully quit Claude via the system tray, then reopen.</span></li>
+              <li><span class="step-text dim">Optional: Settings → Claude Code → Allow bypass permissions.</span></li>
             </ol>
           </div>
 
